@@ -1,0 +1,45 @@
+$panel-width: 40px;
+$panel-height: 400px;
+$panels-number: 60;
+$panels-centerOffset: 380px;
+
+.projects-wheel {
+  transform-style: preserve-3d;
+  display: flex;
+
+  height: 90%;
+  width: 80%;
+
+  justify-content: center;
+  align-items: flex-end;
+
+  .projects-panel {
+    position: absolute;
+    transform: translate(0%, -50%) rotateY(var(--angle))
+      translateZ($panels-centerOffset);
+    width: $panel-width;
+    height: $panel-height;
+    overflow: hidden;
+    cursor: pointer;
+
+    // border: 1px solid white;
+    // background-color: #fff2;
+  }
+
+  .projects-panel::before {
+    position: absolute;
+    content: url(//unsplash.it/800/400) // url("./assets/Filler.png")
+      url(//unsplash.it/790/400) // url("./assets/Filler.png")
+      url(//unsplash.it/810/400);
+
+    width: max-content;
+    left: var(--left);
+  }
+
+  @for $i from 0 to $panels-number {
+    .projects-panel:nth-child(#{$i + 1}) {
+      --left: #{$panel-width * $i * -1};
+      --angle: #{calc(360deg / $panels-number) * $i};
+    }
+  }
+}

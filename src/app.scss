@@ -1,0 +1,12 @@
+#root {
+  height: 100vh;
+  overflow: hidden;
+  main {
+    height: 100%;
+    perspective: var(--perspective);
+    perspective-origin: 50% -10%;
+    display: flex;
+
+    border: 4px solid var(--clr-elements);
+  }
+}
